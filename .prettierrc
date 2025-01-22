@@ -1,0 +1,17 @@
+{
+  "arrowParens": "avoid",
+  "useTabs": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "semi": true,
+  "trailingComma": "none",
+  "importOrder": [
+		"<THIRD_PARTY_MODULES>",
+		"/hooks/",
+		"/components/",
+		"^../(.*)",
+		"^./(.*)"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
+}

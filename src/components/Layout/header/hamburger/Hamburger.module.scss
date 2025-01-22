@@ -1,0 +1,55 @@
+@use '@/assets/styles/variables';
+@use '@/assets/styles/animations';
+
+.wrapper {
+	position: relative;
+
+	button {
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+
+		> svg > path {
+			//animation: opacity 0.2s forwards;
+			fill: #fff;
+		}
+	}
+
+	.menu {
+		position: absolute;
+		top: calc(100% - 8px);
+		right: 12px;
+		background-color: #fff;
+		padding: 10px 12px;
+		font-size: 16px;
+		box-shadow: variables.$bx-16;
+		border-radius: 10px 0 10px 10px;
+		min-width: 116px;
+		display: none;
+		animation: opacity 0.4s;
+
+		&.show {
+			display: block;
+		}
+
+		> ul {
+			list-style: none;
+
+			> li {
+				margin-bottom: 4px;
+			}
+
+			a {
+				color: #000;
+				text-decoration: none;
+				transition: color 0.2s ease;
+
+				&:hover,
+				&:active {
+					color: variables.$accent;
+				}
+			}
+		}
+	}
+}

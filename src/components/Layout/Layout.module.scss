@@ -1,0 +1,43 @@
+@use '@/assets/styles/variables';
+
+.wrapper {
+	display: grid;
+	grid-template-rows: auto 1fr auto auto;
+	align-items: end;
+
+	height: 100%;
+	max-width: 560px;
+	width: 100%;
+
+	padding: 25px;
+	margin: 0 auto;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	// background: linear-gradient(
+	// 	180deg,
+	// 	rgba(12, 230, 238, 0.1) 0%,
+	// 	rgba(16, 215, 218, 0) 70%
+	// );
+
+	&.otherPage {
+		height: 280px;
+		border-radius: 0 0 20px 20px;
+		box-shadow: variables.$bx-accent;
+		@media (max-width: variables.$mobile) {
+			height: 260px !important;
+		}
+	}
+}
+
+.heading {
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 30px;
+	font-weight: bold;
+
+	@media (max-width: variables.$mobile) {
+		height: 24px;
+	}
+}

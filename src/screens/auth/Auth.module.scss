@@ -1,0 +1,95 @@
+@use 'sass:color';
+@use '@/assets/styles/variables';
+@use '@/assets/styles/mixins';
+
+.wrapperButtons {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	> div {
+		width: 48%;
+
+		> button {
+			width: 100%;
+		}
+
+		&:last-child > button {
+			@include mixins.transition();
+			background-color: #20366b;
+			opacity: 0.8;
+
+			&:hover {
+				background-color: #29478c;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.switch {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	margin-top: 2rem;
+	height: 26px;
+	width: 3rem;
+	border-radius: 12px;
+	background-color: #a3a3a3;
+	transition: background-color 0.3s ease, opacity 0.5s ease; /* Добавлено плавное изменение фона */
+	opacity: 0.8;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	> .thumb {
+		display: inline-flex;
+		align-items: flex-end;
+		justify-content: center;
+		margin-left: 2px;
+		border-radius: 12px;
+		background-color: #3f3f46;
+		height: 22px;
+		width: 1.5rem;
+		transition: background-color 0.3s ease, transform 0.3s ease;
+		font-size: small;
+		user-select: none;
+		box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+			rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+
+		&.checked {
+			background-color: rgba(181, 52, 113, 1);
+			transform: translateX(20px);
+		}
+	}
+
+	&.checked {
+		background-color: #20366b; /* Фон будет изменяться плавно с transition */
+	}
+}
+
+.error {
+	color: rgb(175, 17, 17);
+	font-size: 1rem;
+	text-align: left;
+	margin-top: 0.75rem;
+}
+
+@keyframes opacity-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes opacity-out {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
