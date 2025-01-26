@@ -3,6 +3,7 @@ import Home from "../screens/home/Home";
 import NewWorkout from "../screens/New-workout/NewWorkout";
 import Profile from "../screens/profile/Profile";
 import NotFound from "../screens/not-found/NotFound";
+import NewExercise from "../screens/new-exercise/NewExercise";
 
 
 const routes = [
@@ -27,17 +28,18 @@ const routes = [
         isAuth: true
     },
     {
-        path: '*',
-        component: NotFound,
-        isAuth: false
-    }
-    /* 
-    {
         path: '/new-exercise',
-
         component: NewExercise,
         isAuth: true,
     },
+    {
+        path: '*',
+        component: NotFound,
+        isAuth: false
+    },
+
+    /* 
+
 
     {
         path: '/workout/:id',

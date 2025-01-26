@@ -1,24 +1,11 @@
+import { useProfile } from '../../../../screens/profile/useProfile';
 import styles from './Statistics.module.scss';
 
 const Statistics = () => {
-	const statisticsData = [
-		{
-			label: 'Minutes',
-			value: 20
-		},
-		{
-			label: 'Workouts',
-			value: 'Hard'
-		},
-		{
-			label: 'Kgs',
-			value: '5%'
-		}
-	];
-
+	const { data } = useProfile();
 	return (
 		<div className={styles['statistics']}>
-			{(statisticsData || []).map((statistic, idx) => (
+			{(data?.statistics || []).map((statistic, idx) => (
 				<div key={idx} className={styles['statistics-cell']}>
 					<span className={styles['label']}>{statistic.label}</span>
 					<span className={styles['value']}>{statistic.value}</span>

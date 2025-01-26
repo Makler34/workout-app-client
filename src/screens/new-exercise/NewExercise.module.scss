@@ -1,0 +1,24 @@
+@use '@/assets/styles/variables';
+@use '@/assets/styles/mixins';
+
+.images {
+	@include mixins.flex-horizontal-center;
+	justify-content: center;
+	margin-top: 0.7rem;
+	margin-bottom: 0.7rem;
+
+	> img {
+		@include mixins.transition(border-bottom);
+		margin: 0 0.5rem;
+		height: 50px;
+		cursor: pointer;
+		border-bottom: 2px solid transparent;
+		padding-bottom: 0.5rem;
+		opacity: 0.4;
+
+		&.active {
+			opacity: 0.6;
+			border-color: variables.$accent;
+		}
+	}
+}

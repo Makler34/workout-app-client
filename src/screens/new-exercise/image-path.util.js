@@ -1,0 +1,1 @@
+export const getIconPath = (name) => `/uploads/exercises/${name}.svg`

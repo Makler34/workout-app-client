@@ -11,7 +11,6 @@ const useCheckToken = () => {
     const { pathname } = useLocation();
 
     useEffect(() => {
-        console.log('!', pathname, isAuth, cookies.get(TOKEN));
         const token = cookies.get(TOKEN);
 
         if (!token) {
