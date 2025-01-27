@@ -23,8 +23,7 @@ const useCreateExercise = () => {
     const { mutate, isPending, isSuccess, error } = useMutation({
         mutationFn: ({ name, times, iconPath }) =>
             exerciseService.create({ name, times, iconPath }),
-        onSuccess: data => {
-            console.log(data);
+        onSuccess: () => {
             reset();
         }
     });

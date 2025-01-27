@@ -1,10 +1,20 @@
+import { WORKOUTS } from "../../app.constants";
 import { $axios } from "../../api";
-import { EXERCISE } from "../../app.constants";
 
-class ExerciseService {
+
+class WorkoutService {
     async getAll() {
         try {
-            const response = await $axios.get(`${EXERCISE}`);
+            const response = await $axios.get(`${WORKOUTS}`);
+            return response.data;
+        } catch (error) {
+            throw new Error(error)
+        }
+
+    }
+    async getById(id) {
+        try {
+            const response = await $axios.get(`${WORKOUTS}/${id}`);
             return response.data;
         } catch (error) {
             throw new Error(error)
@@ -13,7 +23,7 @@ class ExerciseService {
     }
     async create(body) {
         try {
-            const response = await $axios.post(`${EXERCISE}`, body);
+            const response = await $axios.post(`${WORKOUTS}`, body);
             return response.data;
         } catch (error) {
             throw new Error(error)
@@ -22,7 +32,7 @@ class ExerciseService {
 
     async update(id, body) {
         try {
-            const response = await $axios.put(`${EXERCISE}/${id}`, body);
+            const response = await $axios.put(`${WORKOUTS}/${id}`, body);
             return response.data;
         } catch (error) {
             throw new Error(error)
@@ -31,7 +41,7 @@ class ExerciseService {
 
     async delete(id) {
         try {
-            const response = await $axios.delete(`${EXERCISE}/${id}`);
+            const response = await $axios.delete(`${WORKOUTS}/${id}`);
             return response.data;
         } catch (error) {
             throw new Error(error)
@@ -40,4 +50,4 @@ class ExerciseService {
 }
 
 
-export default new ExerciseService();
+export default new WorkoutService();

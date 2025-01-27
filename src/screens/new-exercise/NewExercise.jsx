@@ -8,6 +8,7 @@ import Loader from '../../components/Layout/ui/Loader';
 import Alert from '../../components/Layout/ui/alert/Alert';
 import { getIconPath } from './image-path.util';
 import useCreateExercise from '../../hooks/useCreateExercise';
+import { getIconFromServer } from '../../utils';
 
 const data = ['chest', 'shoulders', 'biceps', 'legs', 'hit', 'back'];
 
@@ -61,36 +62,33 @@ const NewExercise = () => {
 						rules={{
 							required: 'Choose a muscle group'
 						}}
-						render={({ field: { value, onChange } }) => {
-							console.log(value);
-							return (
-								<div className={styles.images}>
-									{data.map(name => (
-										<img
-											key={`ex img ${name}`}
-											src={`${import.meta.env.VITE_SERVER_URL}${getIconPath(
-												name
-											)}`}
-											alt={name}
-											className={cn({
-												[styles.active]: value === getIconPath(name)
-											})}
-											draggable={false}
-											onClick={() => onChange(getIconPath(name))}
-										/>
-									))}
-								</div>
-							);
-						}}
+						render={({ field: { value, onChange } }) => (
+							<div className={styles.images}>
+								{data.map(name => (
+									<img
+										key={`ex img ${name}`}
+										src={getIconFromServer(getIconPath(name))}
+										alt={name}
+										className={cn({
+											[styles.active]: value === getIconPath(name)
+										})}
+										draggable={false}
+										onClick={() => onChange(getIconPath(name))}
+									/>
+								))}
+							</div>
+						)}
 					/>
 
 					{errors?.iconPath && (
 						<div className="error">{errors?.iconPath?.message}</div>
 					)}
 
-					<Button tabIndex={0} clickHandler={() => {}}>
-						Create
-					</Button>
+					<div className={styles['button-create']}>
+						<Button tabIndex={0} clickHandler={() => {}}>
+							Create
+						</Button>
+					</div>
 				</form>
 			</div>
 		</>

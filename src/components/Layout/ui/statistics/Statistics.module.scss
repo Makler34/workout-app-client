@@ -1,3 +1,5 @@
+@use '@/assets/styles/variables';
+
 .statistics {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -7,6 +9,10 @@
 	gap: 10px;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+
+	@media (max-width: variables.$mobile) {
+		margin-top: 0;
+	}
 
 	.statistics-cell {
 		display: flex;

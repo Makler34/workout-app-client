@@ -1,11 +1,14 @@
 @use '@/assets/styles/variables';
 @use '@/assets/styles/mixins';
 
+.button-create {
+	margin-top: 1rem;
+}
+
 .images {
 	@include mixins.flex-horizontal-center;
 	justify-content: center;
 	margin-top: 0.7rem;
-	margin-bottom: 0.7rem;
 
 	> img {
 		@include mixins.transition(border-bottom);

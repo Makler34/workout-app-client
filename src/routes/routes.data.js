@@ -4,6 +4,9 @@ import NewWorkout from "../screens/New-workout/NewWorkout";
 import Profile from "../screens/profile/Profile";
 import NotFound from "../screens/not-found/NotFound";
 import NewExercise from "../screens/new-exercise/NewExercise";
+import ListWorkouts from "../screens/workouts/list/ListWorkouts";
+import Workout from "../screens/workouts/detail/Workout";
+import Exercise from "../screens/exercise/Exercise";
 
 
 const routes = [
@@ -33,33 +36,29 @@ const routes = [
         isAuth: true,
     },
     {
-        path: '*',
-        component: NotFound,
-        isAuth: false
-    },
-
-    /* 
-
-
-    {
-        path: '/workout/:id',
-
-        component: SingleWorkout,
-        auth: true,
-    },
-    {
         path: '/workouts',
 
         component: ListWorkouts,
         isAuth: true,
     },
     {
+        path: '/workout/:id',
+
+        component: Workout,
+        auth: true,
+    },
+
+    {
         path: '/exercise/:id',
 
-        component: SingleExercise,
+        component: Exercise,
         isAuth: true,
-    }, */
-
+    },
+    {
+        path: '*',
+        component: NotFound,
+        isAuth: false
+    },
 ]
 
 
