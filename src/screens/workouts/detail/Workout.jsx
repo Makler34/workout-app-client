@@ -1,26 +1,26 @@
-import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import styles from '../Workout.module.scss';
 import stylesLayout from '../../../components/Layout/Layout.module.scss';
 import Header from '../../../components/Layout/header/Header';
 import cn from 'clsx';
-import workoutLogService from '../../../services/workout/workout-log.service';
+
 import ExerciseItem from './ExerciseItem';
 import Loader from '../../../components/Layout/ui/Loader';
 import { Fragment } from 'react';
+import Button from '../../../components/Layout/ui/button/Button';
+import { useWorkout } from './useWorkout';
+import ExerciseError from '../../../components/Layout/ui/error/ExerciseError';
 
 const Workout = () => {
 	const { id } = useParams();
-
 	const {
-		data: workoutLog,
+		completeWorkout,
+		error,
+		errorCompleted,
+		isLoading,
 		isSuccess,
-		isLoading
-	} = useQuery({
-		queryKey: ['get workout', id],
-		queryFn: () => workoutLogService.getById(id)
-		//select: ({ data }) => data
-	});
+		workoutLog
+	} = useWorkout();
 
 	return (
 		<>
@@ -43,11 +43,12 @@ const Workout = () => {
 				className="wrapper-inner-page"
 				style={{ paddingLeft: 0, paddingRight: 0 }}
 			>
+				<ExerciseError errors={[error, errorCompleted]} />
 				{isLoading ? (
 					<Loader />
 				) : (
 					<div className={styles.wrapper}>
-						{(workoutLog?.exerciseLogs || []).map((exerciseLog, index) => (
+						{workoutLog?.exerciseLogs.map((exerciseLog, index) => (
 							<Fragment key={exerciseLog.id}>
 								<ExerciseItem exerciseLog={exerciseLog} />
 								{index % 2 !== 0 &&
@@ -57,6 +58,12 @@ const Workout = () => {
 							</Fragment>
 						))}
 					</div>
+				)}
+
+				{!workoutLog?.isCompleted && (
+					<Button clickHandler={() => completeWorkout(id)}>
+						{'Завершить тренировку'}
+					</Button>
 				)}
 			</div>
 		</>

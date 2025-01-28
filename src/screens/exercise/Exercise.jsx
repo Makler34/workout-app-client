@@ -6,7 +6,8 @@ import TableHeader from './table/TableHeader';
 import TableRow from './table/TableRow';
 import { useUpdateLogTime } from './hook/useUpdateLogTime';
 import { useCompleteLog } from './hook/useCompleteLog';
-import ExerciseError from './ExerciseError';
+import ExerciseError from '../../components/Layout/ui/error/ExerciseError';
+import Button from '../../components/Layout/ui/button/Button';
 
 const Exercise = () => {
 	const { exerciseLog, isSuccess, isLoading, error } = useExercise();
@@ -36,6 +37,12 @@ const Exercise = () => {
 							/>
 						))}
 					</div>
+				)}
+
+				{!exerciseLog?.isCompleted && (
+					<Button clickHandler={() => completeLog({ isCompleted: true })}>
+						{'Завершить упражнение'}
+					</Button>
 				)}
 			</div>
 		</>

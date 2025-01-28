@@ -1,4 +1,4 @@
-import Alert from '../../components/Layout/ui/alert/Alert';
+import Alert from '../alert/Alert';
 
 const ExerciseError = ({ errors }) => {
 	return (

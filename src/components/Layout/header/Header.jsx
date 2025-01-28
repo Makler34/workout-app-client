@@ -15,6 +15,7 @@ const Header = () => {
 		<header className={styles['headers']}>
 			{pathname !== '/' || !isAuth ? (
 				<button
+					aria-label="go to profile"
 					title="back"
 					onClick={() => {
 						navigate(isAuth ? -1 : '/auth');
@@ -24,6 +25,7 @@ const Header = () => {
 				</button>
 			) : (
 				<button
+					aria-label="go back"
 					onClick={() => {
 						navigate('/profile');
 					}}

@@ -14,7 +14,7 @@ const Hamburger = () => {
 
 	return (
 		<div className={styles['wrapper']}>
-			<button ref={ref} onClick={handleButtonClick}>
+			<button aria-label="open menu" ref={ref} onClick={handleButtonClick}>
 				{isShow ? <IoClose size={30} /> : <CgMenuRight size={30} />}
 				<Menu isShow={isShow} />
 			</button>

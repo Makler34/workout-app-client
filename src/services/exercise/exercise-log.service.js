@@ -30,9 +30,9 @@ class ExerciseLogService {
         }
     }
 
-    async complete(timeId, body) {
+    async complete(exerciseId, body) {
         try {
-            const response = await $axios.patch(`${EXERCISELOG}/complete/${timeId}`, body);
+            const response = await $axios.patch(`${EXERCISELOG}/complete/${exerciseId}`, body);
             return response.data;
         } catch (error) {
             throw new Error(error)
